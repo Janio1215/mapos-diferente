@@ -1,19 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 # production
-
-
-install/
-application/config/config.php
-application/config/database.php
-
-
-
-
-
 /install/files
 /docker/data
-/install/
-
 
 # misc
 .DS_Store
@@ -21,8 +9,6 @@ application/config/database.php
 
 /vendor/
 /application/vendor/
-/config/
-/application/config/
 
 .env.local
 .env.development.local
