@@ -151,16 +151,6 @@
                     </div>
                 </div>
 
-                // criando campo carimbo
-
-                <div class="control-group">
-                    <label for="carimbo" class="control-label"><span class="required">Carimbo*</span></label>
-                    <div class="controls">
-                        <input type="file" name="userfile" value="" />
-                    </div>
-                </div>
-                
-
 
             </div>
             <div class="modal-footer" style="display:flex;justify-content: center">
@@ -188,7 +178,6 @@
                         <tbody>
                             <tr>
                                 <td style="width: 25%"><img src=" <?= $dados->url_logo; ?> "></td>
-                                <td style="width: 25%"><img src=" <?= $dados->url_carimbo; ?> "></td>
                                 <td> <span style="font-size: 20px; ">
                                         <?= $dados->nome; ?> </span> </br><span>
                                         <?= $dados->cnpj; ?> </br>
@@ -203,7 +192,6 @@
                     <div style="display:flex">
                       <a href="#modalAlterar" data-toggle="modal" role="button" class="button btn btn-success"><span class="button__icon"><i class='bx bx-edit' ></i></span><span class="button__text2">Atualizar Dados</span></a>
                       <a href="#modalLogo" data-toggle="modal" role="button" class="button btn btn-inverse"><span class="button__icon"><i class='bx bx-upload' ></i></span> <span class="button__text2">Alterar Logo</span></a>
-
                     </div>
                 </div>
             </div>
@@ -316,31 +304,6 @@
         </form>
     </div>
 
-   
-
-    <div id="modalCarimbo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <form action="<?= site_url('mapos/editarCarimbo'); ?>" id="formCarimbo" enctype="multipart/form-data" method="post" class="form-horizontal">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="">Atualizar Carimbo</h3>
-            </div>
-            <div class="modal-body">
-                <div class="span12 alert alert-info">Selecione uma nova imagem de Carimbo. Tamanho indicado (130 X 130).</div>
-                <div class="control-group">
-                    <label for="carimbo" class="control-label"><span class="required">Carimbo*</span></label>
-                    <div class="controls">
-                        <input type="file" name="carimbofile" value="" />
-                        <input id="nome" type="hidden" name="id" value="<?= $dados->id; ?>" />
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer" style="display:flex;justify-content: center">
-              <button class="button btn btn-mini btn-danger" data-dismiss="modal" aria-hidden="true" id="btnCancelExcluir"><span class="button__icon"><i class='bx bx-x' ></i></span> <span class="button__text2">Cancelar</span></button>
-              <button class="button btn btn-primary"><span class="button__icon"><i class="bx bx-sync"></i></span><span class="button__text2">Atualizar</span></button>
-            </div>
-        </form>
-    </div>
-
 <?php } ?>
 
 
@@ -372,39 +335,10 @@
             }
         });
 
-        // criando form carimbo
-
-        $("#formCarimbo").validate({
-            rules: {
-                carimbofile: {
-                    required: true
-                }
-            },
-            messages: {
-                carimbofile: {
-                    required: 'Campo Requerido.'
-                }
-            },
-
-            errorClass: "help-inline",
-            errorElement: "span",
-            highlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').addClass('error');
-                $(element).parents('.control-group').removeClass('success');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').removeClass('error');
-                $(element).parents('.control-group').addClass('success');
-            }
-        });
-
 
         $("#formCadastrar").validate({
             rules: {
                 userfile: {
-                    required: true
-                },
-                carimbofile: {
                     required: true
                 },
                 nome: {
@@ -440,9 +374,6 @@
             },
             messages: {
                 userfile: {
-                    required: 'Campo Requerido.'
-                },
-                carimbofile: {
                     required: 'Campo Requerido.'
                 },
                 nome: {
@@ -495,9 +426,6 @@
                 userfile: {
                     required: true
                 },
-                carimbofile: {
-                    required: true
-                },
                 nome: {
                     required: true
                 },
@@ -531,9 +459,6 @@
             },
             messages: {
                 userfile: {
-                    required: 'Campo Requerido.'
-                },
-                carimbofile: {
                     required: 'Campo Requerido.'
                 },
                 nome: {

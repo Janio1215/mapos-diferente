@@ -40,7 +40,7 @@ class Mapos_model extends CI_Model
     public function alterarSenha($senha)
     {
         $this->db->set('senha', password_hash($senha, PASSWORD_DEFAULT));
-        $this->db->where('idUsuarios', $this->session->userdata('id'));
+        $this->db->where('idUsuarios', $this->session->userdata('id_admin'));
         $this->db->update('usuarios');
 
         if ($this->db->affected_rows() >= 0) {
@@ -306,7 +306,7 @@ class Mapos_model extends CI_Model
         return $this->db->get('emitente')->row();
     }
 
-    public function addEmitente($nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email, $logo, $carimbo)
+    public function addEmitente($nome, $cnpj, $ie, $cep, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email, $logo)
     {
         $this->db->set('nome', $nome);
         $this->db->set('cnpj', $cnpj);
@@ -320,7 +320,6 @@ class Mapos_model extends CI_Model
         $this->db->set('telefone', $telefone);
         $this->db->set('email', $email);
         $this->db->set('url_logo', $logo);
-        $this->db->set('url_carimbo', $carimbo);
         return $this->db->insert('emitente');
     }
 
@@ -344,13 +343,6 @@ class Mapos_model extends CI_Model
     public function editLogo($id, $logo)
     {
         $this->db->set('url_logo', $logo);
-        $this->db->where('id', $id);
-        return $this->db->update('emitente');
-    }
-
-    public function editCarimbo($id, $carimbo)
-    {
-        $this->db->set('url_carimbo', $carimbo);
         $this->db->where('id', $id);
         return $this->db->update('emitente');
     }
