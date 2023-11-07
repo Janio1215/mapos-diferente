@@ -142,7 +142,7 @@
                                     <div class="span12" style="padding: 1%; margin-left: 0">
 
                                         <div class="span6">
-                                            <label for="defeito">Defeito descrito pelo cliente</label>
+                                            <label for="defeito">Defeito reclamado pelo cliente</label>
                                             <input name="defeito" class="span12" type="text" id="defeito" value="" />
 
                                         </div>
