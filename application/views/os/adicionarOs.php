@@ -148,7 +148,7 @@
                                         </div>
 
                                         <div class="span6">
-                                            <label for="analiseBasica">Defeito constatado em análise básica</label>
+                                            <label for="analiseBasica">Defeito constatado em pré-análise</label>
                                             <input name="analiseBasica" class="span12" type="text" id="analiseBasica" value="" />
 
                                         </div>

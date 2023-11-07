@@ -135,3 +135,101 @@
         });
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Login e Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background-color: #f0f0f0;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab" id="loginTab">Login</div>
+        <div class="tab" id="cadastroTab">Cadastro</div>
+    </div>
+
+    <div class="form-container" id="loginForm">
+        <h2>Login</h2>
+        <form method="post" action="login.php">
+            <label for="username">Usuário:</label>
+            <input type="text" name="username" id="username" required><br><br>
+            <label for="password">Senha:</label>
+            <input type="password" name="password" id="password" required><br><br>
+            <input type="submit" value="Entrar">
+        </form>
+    </div>
+
+    <div class="form-container" id="cadastroForm" style="display: none;">
+        <h2>Cadastro</h2>
+        <form method="post" action="cadastro.php">
+            <label for="newUsername">Novo Usuário:</label>
+            <input type="text" name="newUsername" id="newUsername" required><br><br>
+            <label for="newPassword">Nova Senha:</label>
+            <input type="password" name="newPassword" id="newPassword" required><br><br>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <script>
+        // Função para alternar entre as abas
+        function changeTab(tabId) {
+            const tabs = document.querySelectorAll(".tab");
+            const forms = document.querySelectorAll(".form-container");
+
+            tabs.forEach(tab => tab.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
+
+            if (tabId === "loginTab") {
+                forms[0].style.display = "block";
+                forms[1].style.display = "none";
+            } else if (tabId === "cadastroTab") {
+                forms[0].style.display = "none";
+                forms[1].style.display = "block";
+            }
+        }
+
+        // Adiciona um ouvinte de eventos às abas
+        document.getElementById("loginTab").addEventListener("click", () => changeTab("loginTab"));
+        document.getElementById("cadastroTab").addEventListener("click", () => changeTab("cadastroTab"));
+    </script>
+</body>
+</html>
+

@@ -333,6 +333,7 @@ DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE TABLE IF NOT EXISTS `servicos_os` (
   `idServicos_os` INT(11) NOT NULL AUTO_INCREMENT,
   `servico` VARCHAR(80) NULL,
+  `descricao` VARCHAR(45) NULL DEFAULT NULL,
   `quantidade` DOUBLE NULL,
   `preco` DECIMAL(10,2) NULL DEFAULT 0,
   `os_id` INT(11) NOT NULL,

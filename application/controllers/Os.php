@@ -718,6 +718,7 @@ class Os extends MY_Controller
         $data = [
             'servicos_id' => $this->input->post('idServico'),
             'quantidade' => $this->input->post('quantidade'),
+            'descricao' => $this->input->post('descricao'),
             'preco' => $this->input->post('preco'),
             'os_id' => $this->input->post('idOsServico'),
             'subTotal' => $this->input->post('preco') * $this->input->post('quantidade'),

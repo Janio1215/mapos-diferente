@@ -183,7 +183,7 @@ $totalProdutos = 0; ?>
                             </table>
 
 
-                            <table class="table table-condensed" id="tblProdutos">
+                             <table class="table table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th >SERVIÇOS</th>
