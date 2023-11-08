@@ -113,7 +113,7 @@
                                         <th style="font-size: 12px">PRODUTO</th>
                                         <th style="font-size: 12px">MARCA</th>
                                         <th style="font-size: 12px">MODELO</th>
-                                        
+                                        <th style="font-size: 12px">NS</th>
                                         <th style="font-size: 12px">QUANT</th>
                                         <th style="font-size: 12px">PREÇO UNIT.</th>
                                         <th style="font-size: 12px">SUB-TOTAL</th>
@@ -128,14 +128,14 @@
                                         echo '<td>' . $p->descricao . '</td>';
                                         echo '<td>' . $p->marcaProduto . '</td>';
                                         echo '<td>' . $p->modeloProduto . '</td>';
-                                        
+                                        echo '<td>' . $p->nsProduto . '</td>';
                                         echo '<td>' . $p->quantidade . '</td>';
                                         echo '<td>' . ($p->preco ?: $p->precoVenda) . '</td>';
                                         echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
                                     } ?>
                                     <tr>
-                                        <td colspan="7" style="text-align: right"><strong>Total:</strong></td>
+                                        <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
                                         <td><strong>R$
                                                 <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
                                     </tr>
@@ -143,18 +143,21 @@
                             </table>
                         <?php
                         } ?>
-                        <hr />
-                        <h4 style="text-align: right">Total: R$
-                            <?php echo number_format($totalProdutos, 2, ',', '.'); ?>
-                        </h4>
+
+                        
+
+
+                        
+                        
                         <?php if ($result->valor_desconto != 0 && $result->desconto != 0) {
-                            ?>
-                        <h4 style="text-align: right">Desconto: R$
-                            <?php echo number_format($result->valor_desconto - $totalProdutos, 2, ',', '.'); ?>
-                        </h4>
-                        <h4 style="text-align: right">Total Com Desconto: R$
-                            <?php echo number_format($result->valor_desconto, 2, ',', '.'); ?>
-                        </h4>
+                            echo "<h6 style='text-align: right'>TOTAL DA OS: R$ " . number_format($totalProdutos, 2, ',', '.') . " " .
+                            ($result->valor_desconto != 0 ? " ---- DESCONTO: R$ " . number_format($result->valor_desconto - $totalProdutos, 2, ',', '.') . " ---- " : "") .
+                            ($result->valor_desconto != 0 ? "[ VALOR FINAL: R$ " . number_format($result->valor_desconto, 2, ',', '.') . " ] " . "</h6>" : "");
+                        ?>
+                        
+
+
+
                     <?php
                         } ?>
                     </div>

@@ -137,8 +137,12 @@ $totalProdutos = 0; ?>
                                                                 <span>E-mail: <?php echo $result->email ?> /
                                                                     <span>Celular:
                                                                         <?php echo $result->celular_cliente ?></span></span><br>
+                                                                <?php if ($result->ucProdutoOs != null) { ?>
                                                                 <span><b>UC:
                                                                         <?php echo $result->ucProdutoOs ?></b></span><br>
+                                                                <?php } ?>
+
+
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -322,24 +326,31 @@ $totalProdutos = 0; ?>
                                     </table>
                                     <?php } ?>
                                     <?php
-                                    if ($totalProdutos != 0 || $totalServico != 0) {
-                                        echo "<h4 style='text-align: right'> Total da OS: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
-                                        echo $result->valor_desconto != 0 ? "<h4 style='text-align: right'> Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "</h4>" : "";
-                                        echo $result->valor_desconto != 0 ? "<h4 style='text-align: right'> Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "</h4>" : "";
-                                     }
+                            
+                                     if ($totalProdutos != 0 || $totalServico != 0) {
+                                        echo "<h6 style='text-align: right'>TOTAL DA OS: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . " " .
+                                        ($result->valor_desconto != 0 ? " ---- DESCONTO: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . " ---- " : "") .
+                                        ($result->valor_desconto != 0 ? "[ VALOR FINAL: R$ " . number_format($result->valor_desconto, 2, ',', '.') . " ] " . "</h6>" : "");
+                                    }
+                                    
+
+                                    
 ?>
                                     <table class="table table-bordered table-condensed">
                                         <tbody>
+                                            <?php if ($result->laudoTecnico != null) { ?>
                                             <tr>
-                                                <td>Data
+                                                <td>Assinatura do Técnico
                                                     <hr>
                                                 </td>
-                                                <td>Assinatura do Cliente
-                                                    <hr>
+                                            
+                                                <td style='text-align: right'>
+                                                    <img src="<?= base_url('assets/img/carimbo.png'); ?>"
+                                                        style="max-height: 80px">
                                                 </td>
-                                                <td>Assinatura do Técnico Responsável
-                                                    <hr>
                                                 </td>
+                                            </tr>
+                                            <?php } ?>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -412,9 +423,11 @@ $totalProdutos = 0; ?>
                                                                     <?php echo $result->bairro ?></span>,
                                                                 <span><?php echo $result->cidade ?> -
                                                                     <?php echo $result->estado ?></span><br>
-                                                                <span>E-mail: <?php echo $result->email ?></span><br>
-                                                                <span>Celular:
-                                                                    <?php echo $result->celular_cliente ?></span>
+                                                                <span>E-mail: <?php echo $result->email ?> /
+                                                                    <span>Celular:
+                                                                        <?php echo $result->celular_cliente ?></span></span><br>
+                                                                <span><b>UC:
+                                                                        <?php echo $result->ucProdutoOs ?></b></span><br>
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -466,17 +479,40 @@ $totalProdutos = 0; ?>
                                             <?php } ?>
                                             <?php if ($result->descricaoProduto != null) { ?>
                                             <tr>
-                                                <td colspan="5">
-                                                    <b>DESCRIÇÃO: </b>
+                                                <td colspan="">
+                                                    <b>PRODUTO: </b>
                                                     <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
+                                                </td>
+                                                <td colspan="">
+                                                    <b>MARCA: </b>
+                                                    <?php echo htmlspecialchars_decode($result->marcaProdutoOs) ?>
+                                                </td>
+                                                <td colspan="">
+                                                    <b>MODELO: </b>
+                                                    <?php echo htmlspecialchars_decode($result->modeloProdutoOs) ?>
+                                                </td>
+                                                <td colspan="">
+                                                    <b>NS: </b>
+                                                    <?php echo htmlspecialchars_decode($result->nsProdutoOs) ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
+
+
+
                                             <?php if ($result->defeito != null) { ?>
                                             <tr>
                                                 <td colspan="5">
                                                     <b>DEFEITO APRESENTADO: </b>
                                                     <?php echo htmlspecialchars_decode($result->defeito) ?>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                            <?php if ($result->analiseBasica != null) { ?>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <b>DEFEITO CONSTATADO EM PRÉ-ANÁLISE: </b>
+                                                    <?php echo htmlspecialchars_decode($result->analiseBasica) ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -498,11 +534,16 @@ $totalProdutos = 0; ?>
                                             <?php } ?>
                                         </tbody>
                                     </table>
+
+
                                     <?php if ($produtos != null) { ?>
                                     <table class="table table-bordered table-condensed" id="tblProdutos">
                                         <thead>
                                             <tr>
                                                 <th>Produtos</th>
+                                                <th>Marca</th>
+                                                <th>Modelo</th>
+                                                <th>NS</th>
                                                 <th>Qt</th>
                                                 <th>V. UN R$</th>
                                                 <th>S.Total R$</th>
@@ -514,13 +555,17 @@ $totalProdutos = 0; ?>
                                                     $totalProdutos = $totalProdutos + $p->subTotal;
                                                     echo '<tr>';
                                                     echo '<td>' . $p->descricao . '</td>';
+                                                    echo '<td>' . $p->marcaProduto . '</td>';
+                                                    echo '<td>' . $p->modeloProduto . '</td>';
+                                                    echo '<td>' . $p->nsProduto . '</td>';
                                                     echo '<td>' . $p->quantidade . '</td>';
                                                     echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
                                                     echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                                     echo '</tr>';
                                                 } ?>
                                             <tr>
-                                                <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
+                                                <td colspan="6" style="text-align: right"><strong>Total
+                                                        Produtos:</strong></td>
                                                 <td><strong>R$
                                                         <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong>
                                                 </td>
@@ -533,6 +578,7 @@ $totalProdutos = 0; ?>
                                         <thead>
                                             <tr>
                                                 <th>Serviços</th>
+                                                <th>Descrição</th>
                                                 <th>Qt</th>
                                                 <th>V. UN R$</th>
                                                 <th>S.Total R$</th>
@@ -545,15 +591,18 @@ $totalProdutos = 0; ?>
                                             $preco = $s->preco ?: $s->precoVenda;
                                             $subtotal = $preco * ($s->quantidade ?: 1);
                                             $totalServico = $totalServico + $subtotal;
+                                        
                                             echo '<tr>';
                                             echo '<td>' . $s->nome . '</td>';
+                                            echo '<td>' . $s->descricao . '</td>';
                                             echo '<td>' . ($s->quantidade ?: 1) . '</td>';
                                             echo '<td>' . $preco . '</td>';
                                             echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
                                             echo '</tr>';
                                         } ?>
                                             <tr>
-                                                <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
+                                                <td colspan="4" style="text-align: right"><strong>Total
+                                                        Serviços:</strong></td>
                                                 <td><strong>R$
                                                         <?php echo number_format($totalServico, 2, ',', '.'); ?></strong>
                                                 </td>
@@ -561,12 +610,12 @@ $totalProdutos = 0; ?>
                                         </tbody>
                                     </table>
                                     <?php } ?>
-                                    
                                     <?php
-                                    if ($totalProdutos != 0 || $totalServico != 0) {
-                                        echo "<h4 style='text-align: right'> Valor Total da OS: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') .
-                                             ", Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') .
-                                             ", Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "</h4>";
+                            
+                                     if ($totalProdutos != 0 || $totalServico != 0) {
+                                        echo "<h6 style='text-align: right'>TOTAL DA OS: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . " " .
+                                        ($result->valor_desconto != 0 ? " ---- DESCONTO: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . " ---- " : "") .
+                                        ($result->valor_desconto != 0 ? "[ VALOR FINAL: R$ " . number_format($result->valor_desconto, 2, ',', '.') . " ] " . "</h6>" : "");
                                     }
                                     
 
@@ -576,16 +625,18 @@ $totalProdutos = 0; ?>
 ?>
                                     <table class="table table-bordered table-condensed">
                                         <tbody>
+                                            <?php if ($result->laudoTecnico != null) { ?>
                                             <tr>
-                                                <td>Data
+                                                <td>Assinatura do Técnico
                                                     <hr>
                                                 </td>
-                                                <td>Assinatura do Cliente
-                                                    <hr>
+                                                <td style='text-align: right'>
+                                                    <img src="<?= base_url('assets/img/carimbo.png'); ?>"
+                                                        style="max-height: 80px">
                                                 </td>
-                                                <td>Assinatura do Técnico Responsável
-                                                    <hr>
                                                 </td>
+                                            </tr>
+                                            <?php } ?>
                                             </tr>
                                         </tbody>
                                     </table>
