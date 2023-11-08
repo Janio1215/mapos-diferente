@@ -265,7 +265,7 @@ class Os_model extends CI_Model
         $query = $this->db->get('servicos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-                $row_set[] = ['label' => $row['nome'] . '|' . $row['descricao'] . ' | Preço: R$ ' . $row['preco'], 'id' => $row['idServicos'], 'preco' => $row['preco']];
+                $row_set[] = ['label' => $row['nome'] . ' | ' . $row['descricao'] . ' | Preço: R$ ' . $row['preco'], 'id' => $row['idServicos'], 'preco' => $row['preco']];
             }
             echo json_encode($row_set);
         }

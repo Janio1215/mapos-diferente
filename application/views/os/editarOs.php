@@ -383,6 +383,7 @@ foreach ($produtos as $p) {
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
+                                                <th>Descrição</th>
                                                 <th width="8%">Quantidade</th>
                                                 <th width="10%">Preço</th>
                                                 <th width="6%">Ações</th>
@@ -398,6 +399,7 @@ foreach ($servicos as $s) {
     $totals = $totals + $subtotals;
     echo '<tr>';
     echo '<td>' . $s->nome . '</td>';
+    echo '<td>' . $s->descricao . '</td>';
     echo '<td><div align="center">' . ($s->quantidade ?: 1) . '</div></td>';
     echo '<td><div align="center">R$ ' . $preco  . '</div></td>';
     echo '<td><div align="center"><span idAcao="' . $s->idServicos_os . '" title="Excluir Serviço" class="btn-nwe4 servico"><i class="bx bx-trash-alt"></i></span></div></td>';

@@ -561,15 +561,17 @@ $totalProdutos = 0; ?>
                                         </tbody>
                                     </table>
                                     <?php } ?>
+                                    
                                     <?php
                                     if ($totalProdutos != 0 || $totalServico != 0) {
-                                        echo "<h4 style='text-align: right'> Valor Total da OS: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
-                                        if ($result->valor_desconto != 0) {
-                                            echo "<h4 style='text-align: right'> Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') . "</h4>";
-                                            echo "<h4 style='text-align: right'> Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "</h4>";
-                                        }
+                                        echo "<h4 style='text-align: right'> Valor Total da OS: R$ " . number_format($totalProdutos + $totalServico, 2, ',', '.') .
+                                             ", Desconto: R$ " . number_format($result->valor_desconto != 0 ? $result->valor_desconto - ($totalProdutos + $totalServico) : 0.00, 2, ',', '.') .
+                                             ", Total com Desconto: R$ " . number_format($result->valor_desconto, 2, ',', '.') . "</h4>";
                                     }
                                     
+
+                                    
+
 
 ?>
                                     <table class="table table-bordered table-condensed">
