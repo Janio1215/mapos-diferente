@@ -24,6 +24,8 @@
                     <th>Nº</th>
                     <th>Data</th>
                     <th>Cliente</th>
+                    <th>CPF / CNPJ</th>
+                    <th>Celular</th>
                     <th>Faturado</th>
                     <th>Ações</th>
                 </tr>
@@ -47,6 +49,8 @@
                         echo '<td>' . $r->idVendas . '</td>';
                         echo '<td>' . $dataVenda . '</td>';
                         echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->nomeCliente . '</a></td>';
+                        echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->documento . '</a></td>';
+                        echo '<td><a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '">' . $r->celular . '</a></td>';
                         echo '<td>' . $faturado . '</td>';
                         echo '<td>';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {

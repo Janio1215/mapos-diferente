@@ -137,10 +137,11 @@ class Vendas_model extends CI_Model
         $this->db->select('*');
         $this->db->limit(5);
         $this->db->like('descricao', $q);
+        $this->db->or_like('modeloProduto', $q);
         $query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-                $row_set[] = ['label'=>$row['descricao'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']];
+                $row_set[] = ['label'=>$row['descricao'].' | Modelo: '.$row['modeloProduto'].' | Preço: R$ '.$row['precoVenda'].' | Estoque: '.$row['estoque'],'estoque'=>$row['estoque'],'id'=>$row['idProdutos'],'preco'=>$row['precoVenda']];
             }
             echo json_encode($row_set);
         }

@@ -23,7 +23,7 @@ $config['github_branch'] = 'main';
 * NOTE: You should only need to set this initially it will be
 * automatically set by the library after subsequent updates.
 */
-$config['current_commit'] = '5e7136756f29dd55d53dafe03b26f667c7fc3f88';
+$config['current_commit'] = '34f0615fa14f241bf7b83e0f3dd8112770586148';
 
 /**
 * A list of files or folders to never perform an update on.
