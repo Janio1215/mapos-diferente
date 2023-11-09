@@ -201,11 +201,13 @@ class Os_model extends CI_Model
         $this->db->limit(5);
         $this->db->like('codDeBarra', $q);
         $this->db->or_like('descricao', $q);
+        $this->db->or_like('marcaProduto', $q);
+        $this->db->or_like('modeloProduto', $q);
         $this->db->where('saida', 1);
         $query = $this->db->get('produtos');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
-                $row_set[] = ['label' => $row['descricao'] . ' | Preço: R$ ' . $row['precoVenda'] . ' | Estoque: ' . $row['estoque'], 'estoque' => $row['estoque'], 'id' => $row['idProdutos'], 'preco' => $row['precoVenda']];
+                $row_set[] = ['label' => $row['descricao'] .' | ' . $row['marcaProduto'] . ' | ' . $row['modeloProduto'] .' | R$ ' . $row['precoVenda'] . ' | Estoque: ' . $row['estoque'], 'estoque' => $row['estoque'], 'id' => $row['idProdutos'], 'preco' => $row['precoVenda']];
             }
             echo json_encode($row_set);
         }
