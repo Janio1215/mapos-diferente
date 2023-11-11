@@ -93,23 +93,26 @@ $totalProdutos = 0; ?>
                                 <tbody>
                                     <?php if ($result->descricaoProduto != null) { ?>
                                         <tr>
-                                            <td>
-                                                <strong>Produto</strong><br>
-                                                <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
-                                            </td>
-                                            <td>
-                                                <strong>Marca</strong><br>
-                                                <?php echo htmlspecialchars_decode($result->marcaProdutoOs) ?>
-                                            </td>
-                                            <td>
-                                                <strong>Modelo</strong><br>
-                                                <?php echo htmlspecialchars_decode($result->modeloProdutoOs) ?>
-                                            </td>
-                                            <td>
-                                                <strong>NS</strong><br>
-                                                <?php echo htmlspecialchars_decode($result->nsProdutoOs) ?>
-                                            </td>
-                                        </tr>
+                                    <td colspan="">
+                                        <b>DESCRIÇÃO: </b>
+                                        <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
+                                    </td>
+
+                                    <td colspan="">
+                                        <b>MARCA: </b>
+                                        <?php echo htmlspecialchars_decode($result->marcaProdutoOs) ?>
+                                    </td>
+
+                                    <td colspan="">
+                                        <b>MODELO: </b>
+                                        <?php echo htmlspecialchars_decode($result->modeloProdutoOs) ?>
+                                    </td>
+
+                                    <td colspan="">
+                                        <b>Número de Série: </b>
+                                        <?php echo htmlspecialchars_decode($result->nsProdutoOs) ?>
+                                    </td>
+                                </tr>
 
                                     <?php
                                     } ?>
