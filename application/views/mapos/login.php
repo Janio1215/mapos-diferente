@@ -155,10 +155,9 @@ $parse_email = $this->input->get('e');
                                         <div class="center"><button id="btn-acessar">Acessar</button>
                                         </div>
 
-                                        <div class="links-uteis"><a href="">
-                                                <p><?= date('Y'); ?> &copy; </p>
-                                            </a>
-                                        </div>
+                                        <div class="links-uteis"><a href="https://github.com/RamonSilva20/mapos">
+                                                <p><?= date('Y'); ?> &copy; Ramon Silva</p>
+                                            </a></div>
                                     </form>
                                 </div>
 
@@ -190,6 +189,7 @@ $parse_email = $this->input->get('e');
                                         </div>
 
                                         <button style="margin: 0" class="btn btn-info btn-large"> Acessar</button>
+                                        <div style="padding: 10px;"></div>
 
                                         <div class="links-uteis"><a href="<?= site_url('mine/resetarSenha') ?>">
                                                 <p style="margin:0px 0 18px">Esqueceu a senha?</p>

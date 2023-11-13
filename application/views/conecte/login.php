@@ -77,7 +77,8 @@ $parse_email = $this->input->get('e');
                                     </div>
 
                                     <button style="margin: 0" class="btn btn-info btn-large"> Acessar</button>
-                                    <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large">Cadastrar-me</a>
+                                    <div style="padding: 10px;"></div>
+                                   
                                     <div class="links-uteis"><a href="<?= site_url('mine/resetarSenha') ?>">
                                             <p style="margin:0px 0 18px">Esqueceu a senha?</p>
                                         </a></div>
