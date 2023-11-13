@@ -97,20 +97,12 @@
                         <div class="controls">
                             <input style="width: 9em;" id="precoCompra" class="money" data-affixes-stay="true"
                                 data-thousands="" data-decimal="." type="text" name="precoCompra"
-                                value="<?php echo set_value('precoCompra'); ?>" onblur="formatarDecimal(this)" />
+                                value="<?php echo set_value('precoCompra'); ?>" />
                             Margem <input style="width: 3em;" id="margemLucro" name="margemLucro" type="text"
                                 placeholder="%" maxlength="3" size="2" />
                             <strong><span style="color: red" id="errorAlert"></span><strong>
                         </div>
                     </div>
-
-                    <script type="text/javascript">
-                    function formatarDecimal(input) {
-                        var valor = parseFloat(input.value);
-                        input.value = (isNaN(valor) ? "" : valor.toFixed(2));
-                    }
-                    </script>
-
 
 
                     <div class="control-group">
