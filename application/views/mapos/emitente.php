@@ -67,7 +67,7 @@ h5 {
                 <a href="#modalCadastrar" data-toggle="modal" role="button" class="button btn btn-success"
                     style="max-width: 150px">
                     <span class="button__icon"><i class='bx bx-plus-circle'></i></span><span
-                        class="button__text2">Cadastrar Dados</span></a>
+                        class="button__text2">Cadastrar</span></a>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@ h5 {
         method="post" class="form-horizontal">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel" style="text-align-last:center">MapOS - Cadastrar Dados do Emitente</h5>
+            <h5 id="myModalLabel" style="text-align-last:center">Cadastrar Dados do Emitente</h5>
         </div>
         <div class="modal-body" style="display: grid;grid-template-columns: 1fr 1fr">
             <div class="control-group">
@@ -258,7 +258,7 @@ h5 {
         class="form-horizontal">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="">MapOS - Editar Dados do Emitente</h3>
+            <h3 id="">Editar Dados do Emitente</h3>
         </div>
         <div class="modal-body" style="display: grid;grid-template-columns: 1fr 1fr">
             <div class="control-group">
@@ -351,7 +351,7 @@ h5 {
         class="form-horizontal">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="">MapOS - Atualizar Logotipo</h3>
+            <h3 id="">Atualizar Logotipo</h3>
         </div>
         <div class="modal-body">
             <div class="span12 alert alert-info">Selecione uma nova imagem da logotipo. Tamanho indicado (130 X 130).
