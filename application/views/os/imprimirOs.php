@@ -345,7 +345,7 @@ $totalProdutos = 0; ?>
                                                 </td>
                                             
                                                 <td style='text-align: right'>
-                                                    <img src="<?= base_url('assets/img/carimbo.png'); ?>"
+                                                    <img src="<?= base_url('assets/img/carimbo/carimbo.png'); ?>"
                                                         style="max-height: 80px">
                                                 </td>
                                                 </td>
@@ -631,7 +631,7 @@ $totalProdutos = 0; ?>
                                                     <hr>
                                                 </td>
                                                 <td style='text-align: right'>
-                                                    <img src="<?= base_url('assets/img/carimbo.png'); ?>"
+                                                    <img src="<?= base_url('assets/img/carimbo/carimbo.png'); ?>"
                                                         style="max-height: 80px">
                                                 </td>
                                                 </td>
