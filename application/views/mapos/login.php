@@ -120,7 +120,7 @@ $parse_email = $this->input->get('e');
                                 }
 
                                 .tab.active {
-                                    background-color: #FF6347;
+                                    background-color: #fd5e33;
 
                                 }
 

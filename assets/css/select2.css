@@ -2,12 +2,15 @@
 Version: 3.2 Timestamp: Mon Sep 10 10:38:04 PDT 2012
 */
 .select2-container {
-    position: relative;
+  position: relative;
+  display: inline-block;
+  /* inline-block for ie7 */
+  zoom: 1;
+  .select2-container .select2-choice .select2-chosen {
     display: inline-block;
-    /* inline-block for ie7 */
-    zoom: 1;
-    *display: inline;
-    vertical-align: top; width:90%;
+    vertical-align: top;
+    width: 90%;
+  }
 }
 .dataTables_length .select2-container{ width:auto!important;}
 .select2-container,
