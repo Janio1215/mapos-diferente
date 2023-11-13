@@ -37,6 +37,7 @@ $config['current_commit'] = '34f0615fa14f241bf7b83e0f3dd8112770586148';
 */
 $config['ignored_files'] = [
     'application/config',
+    'assents/img/carimbo',
     'application/database',
     'application/email',
     'index.php',
