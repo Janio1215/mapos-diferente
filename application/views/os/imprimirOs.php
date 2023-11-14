@@ -343,7 +343,7 @@ $totalProdutos = 0; ?>
                                                 <td>Assinatura do Técnico
                                                     <hr>
                                                 </td>
-                                            
+
                                                 <td style='text-align: right'>
                                                     <img src="<?= base_url('assets/img/carimbo/carimbo.png'); ?>"
                                                         style="max-height: 80px">
@@ -654,3 +654,5 @@ $totalProdutos = 0; ?>
 </body>
 
 </html>
+
+

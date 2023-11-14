@@ -58,7 +58,7 @@ class Garantias_model extends CI_Model
 
     public function getByIdVendaGarantia($id)
     {
-        $this->db->select('garantias.*, clientes.nomeCliente, vendas.idVendas as idVendas, 
+        $this->db->select('garantias.*, clientes.nomeCliente, vendas.idVendas as idVendas, vendas.dataVenda as dataVenda,
          usuarios.telefone as tecnicoTelefone, usuarios.email as tecnicoEmail, usuarios.nome as tecnicoName');
         $this->db->from('garantias');
         $this->db->join('vendas', 'vendas.garantias_id = garantias.idGarantias');

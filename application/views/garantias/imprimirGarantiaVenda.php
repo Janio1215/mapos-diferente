@@ -96,27 +96,18 @@
                                             </td>
                                             <td style="width: 20%; text-align: center">
                                                 <br />
-                                                <span>Garantia OS: <?= $osGarantia->idOs ? $osGarantia->idOs : ""?>
+                                                <span>Garantia Venda: <?= $vendaGarantia->idVendas ? $vendaGarantia->idVendas : ""?>
                                                 </span>
                                                 <br />
                                                 <span>Emissão:
-                                                    <?= $osGarantia->osDataFinal ? date('d/m/Y', strtotime($osGarantia->osDataFinal)) : "" ?>
+                                                    <?= $vendaGarantia->dataVenda ? date('d/m/Y', strtotime($vendaGarantia->dataVenda)) : "" ?>
                                                 </span>
-
-                                                
-
-
                                             </td>
                                         </tr>
                                     <?php
                                     } ?>
                                 </tbody>
                             </table>
-
-                            
-
-
-
                             <table class="table">
                                 <tbody>
                                     <tr>
@@ -139,7 +130,7 @@
                                             <ul>
                                                 <li>
 
-                                                    <span><?php echo htmlspecialchars_decode($osGarantia->textoGarantia) ?></span><br />
+                                                    <span><?php echo htmlspecialchars_decode($vendaGarantia->textoGarantia) ?></span><br />
                                                 </li>
                                             </ul>
                                         </td>

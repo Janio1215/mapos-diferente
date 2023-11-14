@@ -95,9 +95,9 @@
                                                     <span>E-mail: <?php echo $result->email ?></span><br>
                                                     <span>Contato: <?php echo $result->celular_cliente ?></span>
                                                     <?php if ($result->ucProdutoOs != null) { ?>
-                                                                <span> -- <b> UC:
-                                                                        <?php echo $result->ucProdutoOs ?></b></span><br>
-                                                                <?php } ?>
+                                                    <span> -- <b> UC:
+                                                            <?php echo $result->ucProdutoOs ?></b></span><br>
+                                                    <?php } ?>
                                             </li>
                                         </ul>
                                     </td>
