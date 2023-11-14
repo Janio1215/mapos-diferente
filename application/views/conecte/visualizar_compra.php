@@ -85,55 +85,61 @@
                     </div>
 
                     <div style="margin-top: 0; padding-top: 0">
-
-
                         <?php if ($produtos != null) { ?>
-
-                            <table class="table table-bordered table-condensed" id="tblProdutos" style="margin-top: 0; padding-top: 0">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: 15px">Produto</th>
-                                        <th style="font-size: 15px">Quantidade</th>
-                                        <th style="font-size: 15px">Sub-total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-
+                        <table class="table table-bordered table-condensed" id="tblProdutos">
+                            <thead>
+                                <tr>
+                                    
+                                    <th style="font-size: 12px">PRODUTO</th>
+                                    <th style="font-size: 12px">MARCA</th>
+                                    <th style="font-size: 12px">MODELO</th>
+                                    <th style="font-size: 12px">NS</th>
+                                    <th style="font-size: 12px">QUANT</th>
+                                    <th style="font-size: 12px">PREÇO UNIT.</th>
+                                    <th style="font-size: 12px">SUB-TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                     foreach ($produtos as $p) {
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
+                                        
                                         echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td>' . $p->marcaProduto . '</td>';
+                                        echo '<td>' . $p->modeloProduto . '</td>';
+                                        echo '<td>' . $p->nsProduto . '</td>';
                                         echo '<td>' . $p->quantidade . '</td>';
-
+                                        echo '<td>' . ($p->preco ?: $p->precoVenda) . '</td>';
                                         echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
                                     } ?>
-
-                                    <tr>
-                                        <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$
-                                                <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <tr>
+                                    <td colspan="7" style="text-align: right"><strong>Total:</strong></td>
+                                    <td><strong>R$
+                                            <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <?php
                         } ?>
-
                         <hr />
-
-                        <h4 style="text-align: right">Valor Total: R$
+                        <h4 style="text-align: right">Total: R$
                             <?php echo number_format($totalProdutos, 2, ',', '.'); ?>
                         </h4>
-                        <?php if ($result->valor_desconto != 0 || $result->valor_desconto != 0) { ?>
+                        <?php if ($result->valor_desconto != 0 && $result->desconto != 0) {
+                            ?>
                         <h4 style="text-align: right">Desconto: R$
                             <?php echo number_format($result->valor_desconto - $totalProdutos, 2, ',', '.'); ?>
                         </h4>
                         <h4 style="text-align: right">Total Com Desconto: R$
                             <?php echo number_format($result->valor_desconto, 2, ',', '.'); ?>
                         </h4>
-                        <?php } ?>
+                        <?php
+                        } ?>
                     </div>
+
+                    
                 </div>
             </div>
         </div>

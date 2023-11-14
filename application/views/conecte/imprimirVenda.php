@@ -6,7 +6,8 @@
     <title>Map_OS_<?php echo $result->idVendas ?>_<?php echo $result->nomeCliente ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
+    <meta name="description"
+        content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css" />
@@ -28,14 +29,22 @@
 
                                 <?php if ($emitente == null) { ?>
 
-                                    <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
-                                            <<<< /td>
-                                    </tr> <?php } else { ?> <tr>
-                                        <td style="width: 25%"><img src=" <?php echo $emitente->url_logo; ?> "></td>
-                                        <td> <span style="font-size: 20px; "> <?php echo $emitente->nome; ?></span> </br><span><?php echo $emitente->cnpj; ?> </br> <?php echo $emitente->rua . ', nº:' . $emitente->numero . ', ' . $emitente->bairro . ' - ' . $emitente->cidade . ' - ' . $emitente->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente->email . ' - Fone: ' . $emitente->telefone; ?></span></td>
-                                        <td style="width: 18%; text-align: center">#Venda: <span><?php echo $result->idVendas ?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y'); ?></span></td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a
+                                            href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
+                                        <<<< /td>
+                                </tr> <?php } else { ?> <tr>
+                                    <td style="width: 25%"><img src=" <?php echo $emitente->url_logo; ?> "></td>
+                                    <td> <span style="font-size: 20px; "> <?php echo $emitente->nome; ?></span>
+                                        </br><span><?php echo $emitente->cnpj; ?> </br>
+                                            <?php echo $emitente->rua . ', nº:' . $emitente->numero . ', ' . $emitente->bairro . ' - ' . $emitente->cidade . ' - ' . $emitente->uf; ?>
+                                        </span> </br> <span> E-mail:
+                                            <?php echo $emitente->email . ' - Fone: ' . $emitente->telefone; ?></span>
+                                    </td>
+                                    <td style="width: 18%; text-align: center">#Venda:
+                                        <span><?php echo $result->idVendas ?></span></br> </br> <span>Emissão:
+                                            <?php echo date('d/m/Y'); ?></span></td>
+                                </tr>
 
                                 <?php } ?>
                             </tbody>
@@ -50,8 +59,10 @@
                                                 <span>
                                                     <h5>Cliente</h5>
                                                     <span><?php echo $result->nomeCliente ?></span><br />
-                                                    <span><?php echo $result->rua ?>, <?php echo $result->numero ?>, <?php echo $result->bairro ?></span><br />
-                                                    <span><?php echo $result->cidade ?> - <?php echo $result->estado ?></span>
+                                                    <span><?php echo $result->rua ?>, <?php echo $result->numero ?>,
+                                                        <?php echo $result->bairro ?></span><br />
+                                                    <span><?php echo $result->cidade ?> -
+                                                        <?php echo $result->estado ?></span>
                                             </li>
                                         </ul>
                                     </td>
@@ -73,59 +84,86 @@
 
                     </div>
 
+                    <hr />
+
                     <div style="margin-top: 0; padding-top: 0">
-
-
                         <?php if ($produtos != null) { ?>
+                        <table class="table table-bordered table-condensed" id="tblProdutos">
+                            <thead>
+                                <tr>
 
-                            <table class="table table-bordered table-condensed" id="tblProdutos">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: 15px">Produto</th>
-                                        <th style="font-size: 15px">Quantidade</th>
-                                        <th style="font-size: 15px">Sub-total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-
+                                    <th style="font-size: 12px">PRODUTO</th>
+                                    <th style="font-size: 12px">MARCA</th>
+                                    <th style="font-size: 12px">MODELO</th>
+                                    <th style="font-size: 12px">NS</th>
+                                    <th style="font-size: 12px">QUANT</th>
+                                    <th style="font-size: 12px">PREÇO UNIT.</th>
+                                    <th style="font-size: 12px">SUB-TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                     foreach ($produtos as $p) {
                                         $totalProdutos = $totalProdutos + $p->subTotal;
                                         echo '<tr>';
+                                        
                                         echo '<td>' . $p->descricao . '</td>';
+                                        echo '<td>' . $p->marcaProduto . '</td>';
+                                        echo '<td>' . $p->modeloProduto . '</td>';
+                                        echo '<td>' . $p->nsProduto . '</td>';
                                         echo '<td>' . $p->quantidade . '</td>';
-
+                                        echo '<td>' . ($p->preco ?: $p->precoVenda) . '</td>';
                                         echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                         echo '</tr>';
                                     } ?>
-
-                                    <tr>
-                                        <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
-                                        <td><strong>R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
-                                    </tr>
-                                    <?php if ($result->valor_desconto != 0 || $result->valor_desconto != 0) { ?>
-                                    <tr>
-                                        <td colspan="2" style="text-align: right"><strong>Desconto: </strong></td>
-                                        <td>
-                                            <strong>
-                                                R$ <?php echo number_format($result->valor_desconto - $totalProdutos, 2, ',', '.'); ?>
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        <?php } ?>
+                                <tr>
+                                    <td colspan="6" style="text-align: right"><strong>Total:</strong></td>
+                                    <td><strong>R$
+                                            <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <?php
+                        } ?>
 
 
-                        <hr />
 
-                        <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($result->desconto != 0 && $result->valor_desconto != 0 ? $result->valor_desconto : $totalProdutos, 2, ',', '.'); ?></h4>
 
+
+
+                        <?php if ($result->valor_desconto != 0 && $result->desconto != 0) {
+                            echo "<h6 style='text-align: right'>TOTAL DA OS: R$ " . number_format($totalProdutos, 2, ',', '.') . " " .
+                            ($result->valor_desconto != 0 ? " ---- DESCONTO: R$ " . number_format($result->valor_desconto - $totalProdutos, 2, ',', '.') . " ---- " : "") .
+                            ($result->valor_desconto != 0 ? "[ VALOR FINAL: R$ " . number_format($result->valor_desconto, 2, ',', '.') . " ] " . "</h6>" : "");
+                        ?>
+
+
+
+
+                        <?php
+                        } ?>
                     </div>
+                    <hr />
+                    <h5 style="text-align: left">Observações:</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td style="width: 100%; padding-left: 0">
+                                    <ul>
+                                        <li>
+                                            <span><?php echo htmlspecialchars_decode($result->observacoes_cliente) ?></span><br />
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -133,7 +171,7 @@
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/matrix.js"></script>
     <script>
-        window.print();
+    window.print();
     </script>
 
 </body>
