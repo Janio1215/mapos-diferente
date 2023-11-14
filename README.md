@@ -119,3 +119,9 @@ Doações podem ser realizadas nos links:
 ## Autor
 | [<img src="https://avatars.githubusercontent.com/RamonSilva20?s=115"><br><sub>Ramon Silva</sub>](https://github.com/RamonSilva20) |
 | :---: |
+
+
+## Modificações
+| [<img src="https://avatars.githubusercontent.com/Janio1215?s=115"><br><sub>Jânio Viana</sub>](https://github.com/Janio1215) |
+| :---: |
+
