@@ -270,16 +270,16 @@
                             <tbody>
                                 <?php
 
-    foreach ($produtos as $p) {
-        echo '<tr>';
-        echo '<td>' . $p->descricao . '</td>';
-        echo '<td>' . $p->marcaProduto . '</td>';
-        echo '<td>' . $p->modeloProduto . '</td>';
-        echo '<td>' . $p->quantidade . '</td>';
-        echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
-        echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
-        echo '</tr>';
-    } ?>
+                                        foreach ($produtos as $p) {
+                                            echo '<tr>';
+                                            echo '<td>' . $p->descricao . '</td>';
+                                            echo '<td>' . $p->marcaProduto . '</td>';
+                                            echo '<td>' . $p->modeloProduto . '</td>';
+                                            echo '<td>' . $p->quantidade . '</td>';
+                                            echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
+                                            echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                            echo '</tr>';
+                                        } ?>
 
                                 <tr>
                                     <td></td>
