@@ -107,6 +107,6 @@ Doações podem ser realizadas nos links:
 
 
 ## Modificações
-| [<img src="https://avatars.githubusercontent.com/Janio1215?s=115"><br><sub>Jânio Viana</sub>](https://github.com/Janio1215) |
+| [<img src="https://avatars.githubusercontent.com/Janio1215?s=110"><br><sub>Jânio Viana</sub>](https://github.com/Janio1215) |
 | :---: |
 
